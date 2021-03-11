@@ -164,6 +164,8 @@ class Zlapp(Fudan):
         geo_api_info = json_loads(self.last_info["geo_api_info"])
         province = geo_api_info["addressComponent"].get("province", "")
         city = geo_api_info["addressComponent"].get("city", "")
+        if len(city) <= 1:
+            city = province
         district = geo_api_info["addressComponent"].get("district", "")
         self.last_info.update(
                 {
